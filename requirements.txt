@@ -1,0 +1,4 @@
+openai
+ddgs
+jinja2
+python-dotenv

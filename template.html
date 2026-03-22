@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: #f4f1ec;
+            color: #2c2c2c;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        .header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #ffffff;
+            padding: 48px 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        .header .date {
+            font-size: 14px;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .header .tagline {
+            font-size: 16px;
+            color: #cbd5e0;
+            margin-top: 12px;
+            font-style: italic;
+        }
+        .body-content {
+            padding: 40px;
+        }
+        .section {
+            margin-bottom: 36px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid #e8e4df;
+        }
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .section h2 {
+            font-size: 22px;
+            color: #1a1a2e;
+            margin-bottom: 14px;
+            font-weight: 700;
+        }
+        .section .summary {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 16px;
+        }
+        .sources {
+            margin-top: 12px;
+        }
+        .sources h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+        .sources ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sources li {
+            margin-bottom: 6px;
+        }
+        .sources a {
+            font-size: 13px;
+            color: #2b6cb0;
+            text-decoration: none;
+        }
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            background: #f7f5f2;
+            padding: 24px 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+            border-top: 1px solid #e8e4df;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ title }}</h1>
+            <div class="date">{{ date }}</div>
+            <div class="tagline">{{ tagline }}</div>
+        </div>
+        <div class="body-content">
+            {% for section in sections %}
+            <div class="section">
+                <h2>{{ section.headline }}</h2>
+                <div class="summary">{{ section.summary }}</div>
+                {% if section.sources %}
+                <div class="sources">
+                    <h4>Sources</h4>
+                    <ul>
+                        {% for source in section.sources %}
+                        <li><a href="{{ source.url }}" target="_blank">{{ source.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="footer">
+            AI Newsletter Agent
+        </div>
+    </div>
+</body>
+</html>
